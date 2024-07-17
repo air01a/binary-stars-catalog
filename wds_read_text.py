@@ -27,9 +27,11 @@ def wds_read_one_block(data_lines):
 
         # Check each columns to find data
         for index, pos in enumerate(fields_positions):
-            value=line[last_position:pos].strip()
+            value=line[last_position-1:pos].strip()
             last_position=pos+1
             # Convert to float if needed
+            if fields_names[index]=='mag1' or fields_names[index]=='mag2' :
+                    print(value)
             if fields_format[index]=='f':
                 value=float(value) if value!='.' and len(value)>0 else 0.0
 

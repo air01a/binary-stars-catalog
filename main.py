@@ -5,12 +5,6 @@ from pdf import BuildPDF
 
 
 
-
-
-
-
-
-
 wds, wds_indexes = wds_read_files('data')
 gaia = gaia_read_excel_file('data/Résultats-J-GaiaDR3.xlsx')
 pdf = BuildPDF('tableau.pdf')
@@ -26,8 +20,8 @@ for name in gaia['Name'].unique().tolist():
             gaia_secondary = gaia.loc[(gaia['Name'] == name) & (gaia['Rho (arcsec)'] != 0)]
             if len(gaia_secondary)>0:
                 gaia_secondary = gaia_secondary.iloc[0]
-                ad = str(round(gaia_primary["ra"],2))
-                dec = str(round(gaia_primary["dec"],2))
+                ad = str(gaia_primary["ra"])
+                dec = str(gaia_primary["dec"])
                 ref_g = str(gaia_primary["#source_id"])
                 m1 = str(round(float(gaia_primary["phot_g_mean_mag"]),2))
                 m2 = str(round(float(gaia_secondary["phot_g_mean_mag"]),2))

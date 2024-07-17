@@ -30,8 +30,7 @@ class BuildPDF:
         self.pdf.add_page()
         self.pdf.cell(19, 10, name, 0, 0, 'C')
         self.pdf.cell(30, 10, ref, 0, 0, 'C')
-        self.pdf.cell(19, 10, "", 0, 0, 'C')
-        self.pdf.cell(19, 10, "", 0, 0, 'C')
+        self.pdf.ln(5)
         self.pdf.cell(19, 10, ad, 0, 0, 'C')
         self.pdf.cell(19, 10, dec, 0, 0, 'C')
     
@@ -46,8 +45,7 @@ class BuildPDF:
         self.pdf.cell(19, 10, rad_velocity, 0, 0, 'C')
         self.pdf.cell(19, 10, dist, 0, 0, 'C')
 
-        self.pdf.ln(10)
-        self.pdf.ln(10)
+        self.pdf.ln(20)
         self.pdf.cell(19, 10, "Epoque", 0, 0, 'C')
         self.pdf.cell(19, 10, "theta", 0, 0, 'C')
         self.pdf.cell(19, 10, "rho", 0, 0, 'C')
@@ -58,8 +56,8 @@ class BuildPDF:
         self.pdf.cell(19, 10, "Pu", 0, 0, 'C')
         
         self.pdf.ln(5)
-        self.pdf.multi_cell(0, 5, "--------------------------------------------------------------------------------------------------------------------------------", 0, 'L') 
-
+        self.pdf.cell(0, 5, "--------------------------------------------------------------------------------------------------------------------------------", 0, 0,'L') 
+        self.pdf.ln(5)
         for index, row in wds[name].iterrows():
             date = str(row['date'])
             theta = str(row['theta'])
@@ -70,7 +68,6 @@ class BuildPDF:
             obscode = str(row['ref'])
             pu = str(row['tech'])
             
-            print(f"{date};{theta};{m1};{m2};{number};{obscode};{pu}")
             self.pdf.cell(19, 8, date, 0, 0, 'C')
             self.pdf.cell(19, 8, theta, 0, 0, 'C')
             self.pdf.cell(19, 8, rho, 0, 0, 'C')
